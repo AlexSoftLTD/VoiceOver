@@ -1,20 +1,45 @@
-# Голосовой ввод из панели задач
+# VoiceOver — голосовой ввод из панели задач / Voice typing from the taskbar
 
-Небольшая программа для Windows 10/11. Перед запуском Win+H возвращает фокус из панели задач в верхнее обычное окно приложения. При активации приложение восстанавливает своё выбранное текстовое поле. Если вернуть фокус не удалось, команда диктовки не отправляется. Не записывает звук и не распознаёт речь самостоятельно: используется встроенный голосовой ввод Windows.
+## Русский
 
-## Использование
+Маленькая бесплатная программа для запуска встроенного голосового ввода Windows кнопкой на панели задач. Возвращает фокус в окно приложения и отправляет сочетание **Win+H**. Использует распознавание речи Windows; собственного окна и фоновой службы нет. Стандартная панель диктовки Windows остаётся видимой.
 
-1. Нажмите правой кнопкой на `Голосовой ввод.lnk` и выберите «Показать дополнительные параметры» → «Закрепить на панели задач». В некоторых версиях Windows этот пункт доступен сразу или в меню самого `VoiceOver.exe`.
-2. Установите курсор в нужное текстовое поле.
-3. Нажмите закреплённую кнопку с микрофоном.
-4. Повторное нажатие снова передаст Win+H. Поведение остановки зависит от версии Windows; если ввод не остановится, нажмите микрофон в системной панели.
+### Скачать и закрепить
 
-Собственная плавающая панель и фоновая служба не создаются. Во время диктовки Windows может показывать свою стандартную панель. Не перемещайте эту папку после закрепления кнопки. При обновлении VoiceOver.exe по тому же пути закреплять ярлык повторно не требуется.
+1. Скачайте **VoiceOver-v1.0.0.zip** из [последнего релиза](https://github.com/AlexSoftLTD/VoiceOver/releases/latest).
+2. Распакуйте архив в постоянную папку, например `Документы\VoiceOver`.
+3. Нажмите правой кнопкой на **VoiceOver.exe** → **Показать дополнительные параметры** → **Закрепить на панели задач**. В некоторых версиях Windows пункт закрепления доступен сразу.
+4. Поставьте курсор в текстовое поле и нажмите закреплённую кнопку с микрофоном.
 
-Необходимы микрофон, доступ к интернету и включённое распознавание речи Windows. Программа с обычными правами может не передать команду приложению, открытому от имени администратора.
+Остановить диктовку можно кнопкой микрофона на системной панели. Повторное нажатие нашей кнопки снова отправляет Win+H; результат зависит от версии Windows. Остановка не отменяет уже введённый текст.
 
-## Сборка
+Нужны Windows 10/11, микрофон, интернет и разрешённое распознавание речи Windows. Для приложений, открытых от имени администратора, передача команды может не работать. Не перемещайте программу после закрепления.
 
-Запустите `build.ps1` в PowerShell. Используется компилятор .NET Framework, включённый в Windows. Внешние пакеты не нужны. `VoiceOver.exe --self-test` проверяет размер структур Win32 без запуска микрофона.
+### Сборка из исходников
 
-Справка Microsoft: https://support.microsoft.com/en-us/accessibility/windows/use-voice-typing-to-talk-instead-of-type-on-your-pc
+Запустите `build.ps1` в PowerShell. Используется встроенный компилятор .NET Framework; внешние пакеты не нужны. `VoiceOver.exe --self-test` проверяет структуры Win32 без запуска диктовки.
+
+## English
+
+A small free utility that opens Windows voice typing from a taskbar button. It restores focus to the application window and sends **Win+H**. Speech recognition is handled by Windows. The utility has no window or background service; the standard Windows dictation panel remains visible.
+
+### Download and pin
+
+1. Download **VoiceOver-v1.0.0.zip** from the [latest release](https://github.com/AlexSoftLTD/VoiceOver/releases/latest).
+2. Extract it to a permanent folder, such as `Documents\VoiceOver`.
+3. Right-click **VoiceOver.exe** → **Show more options** → **Pin to taskbar**. Some Windows versions show the pin option directly.
+4. Place the caret in a text field and click the pinned microphone button.
+
+Stop dictation using the microphone button on the Windows panel. Clicking our button again sends Win+H again; behavior depends on your Windows version. Stopping dictation does not undo text already entered.
+
+Requires Windows 10/11, a microphone, an internet connection and Windows speech recognition enabled. Sending the command to applications running as administrator may fail. Keep the program in its original location after pinning it.
+
+### Build from source
+
+Run `build.ps1` in PowerShell. It uses the .NET Framework compiler included with Windows; no external packages are required. `VoiceOver.exe --self-test` checks the Win32 structures without starting dictation.
+
+## License / Лицензия
+
+[MIT](LICENSE) — free to use, modify and redistribute, including commercially, with the license notice retained. / Можно бесплатно использовать, изменять и распространять, в том числе коммерчески, сохраняя текст лицензии.
+
+[Windows voice typing — Microsoft Support](https://support.microsoft.com/en-us/accessibility/windows/use-voice-typing-to-talk-instead-of-type-on-your-pc)
